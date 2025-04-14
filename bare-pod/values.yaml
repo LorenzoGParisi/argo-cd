@@ -1,3 +1,5 @@
 name: bare-pod
 replicas: 1
 image: nginx:perl
+pvcName: bare-pod-pvc
+storageClass: standard 
