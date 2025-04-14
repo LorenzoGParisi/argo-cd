@@ -1,7 +1,8 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: {{ .Values.name }}-pod
+  name: {{ .Values.name }}
+  namespace: {{ .Values.name }}
   annotations: 
     argocd.argoproj.io/sync-options: Force=true,Replace=true
   labels:
