@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: {{ .Values.name }}-pod
+  annotations: 
+    argocd.argoproj.io/sync-options: Force=true,Replace=true
+  labels:
+    app: {{ .Values.name }}
+spec:
+  containers:
+    - name: {{ .Values.name }}
+      image: {{ .Values.image }}
+      ports:
+        - containerPort: 80

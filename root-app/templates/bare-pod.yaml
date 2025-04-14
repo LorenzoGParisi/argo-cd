@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bare-pod
+  namespace: bare-pod
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/LorenzoGParisi/argocd-statefulset-health-check
+    targetRevision: main
+    path: helm/bare-pod
+    helm:
+      valueFiles:
+        - bare-pod/values.yaml
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: bare-pod
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
