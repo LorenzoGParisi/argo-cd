@@ -2,6 +2,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: root-app
+  namespace: root-app
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
@@ -12,7 +13,7 @@ spec:
     targetRevision: master
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
+    namespace: root-app
   syncPolicy:
     automated:
       selfHeal: true
